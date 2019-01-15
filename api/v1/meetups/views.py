@@ -1,16 +1,15 @@
 import re
 from datetime import datetime
-from flask.views import View, MethodView
-import json
-from flask import request, jsonify, Blueprint, Flask
+from flask import jsonify,request
 
-
+from .models import Rsvp, Meetup
+from . import rsvp_blueprint
 from . import meetups_blueprint
-from .models import Meetup
 
 @meetups_blueprint.route('/meetups/',methods=['POST'])
 def create_meetup():
     '''a endpoint to create a meetup record'''
+
     data = {
         "id":request.json['id'],
         "topic":request.json['topic'],
@@ -20,7 +19,6 @@ def create_meetup():
         "images":request.json['images'],
         "tags":request.json['tags']
     }
-
      #validation
     if re.match('.*[a-zA-Z0-9]+.*', data["topic"]) is None:
         return jsonify({'response': 'invalid topic'}), 400
@@ -48,4 +46,42 @@ def get_all_meetups():
         return jsonify({"status":200, "data":meetups}),200
     else:
         return jsonify({"status":404,"error":"No meetups found"}),404
+    
+    #validation
+    if re.match('.*[a-zA-Z0-9]+.*', meetup["topic"]) is None:
+        return jsonify({'response': 'invalid topic'}), 400
+    
+    meetup = Meetup().create_meetup(**meetup)
+
+    if meetup:
+        return jsonify({
+                        "status":201,
+                        "data":meetup
+                        }),201
+    else:
+        return jsonify({"status":204,
+                        "error":"Meetup creation failed"
+                        }),204
+
+@rsvp_blueprint.route('/<int:meetup_id>/rsvps/',methods=['POST'])
+def rsvp_for_meetup(meetup_id):
+    print("ID I am here",meetup_id)
+    meetup = Meetup.get_meetup(meetup_id)
+    user = request.json["user"]
+    if user and meetup:
+        data = {
+            "id":request.json["id"],
+            "meetup":meetup,    
+            "response":request.json["response"],
+            "user":user
+        }
+        return jsonify({
+                        "status":201,
+                        "data":data
+                        }), 201
+    else:
+        return jsonify({
+                        "status":404,
+                        "data":"User or Meetup Not Found"
+                        }), 404
 
