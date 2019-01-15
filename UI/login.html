@@ -6,8 +6,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Home</title>
-	<link rel="shortcut icon" type="image/x-icon" href="static/img/quest22.png">
-	<link rel="stylesheet" type="text/css" href="static/css/questioner.css">
+	<link rel="shortcut icon" type="image/x-icon" href="quest22.png">
+	<link rel="stylesheet" type="text/css" href="questioner.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans">
@@ -15,9 +15,9 @@
 <body>
 
 <div class="header" id="header">
-			<a href="https://hullux.github.io/Question-API/" class="logo" style="padding: 0px;">
+			<a href="https://hullux.github.io/Question-API/login/" class="logo" style="padding: 0px;">
 				<span>
-					<img src="static/img/quest22.png" alt="Home">
+					<img src="quest22.png" alt="Home">
 				</span>
 				
 			</a>
@@ -25,7 +25,7 @@
 				<input type="search" name="search" class="search" placeholder="search questioner ...">
 			</span>
 			<span class="user_status" id="user_status">
-				<a class="login_button" id="login_button" href="https://hullux.github.io/Question-API/signup/">
+				<a class="login_button" id="login_button" href="https://hullux.github.io/Question-API/login/">
 					<span><i class="fas fa-user-plus" style="padding-right:5px;display: inline-block;"></i></span>
 					Sign up
 				</a>
@@ -39,34 +39,31 @@
 				</a>
 			</span>
 		</div>
+		<!-- <div id="sidebar-left">Left</div> -->
+		<!-- <div class="top_content" id="top_content" style="color: inherit;">
+				<h2>Welcome to Questioner. Ready to engage in some mind blowin discussions ? ... checkout latest meetups here</h2>
+			</div> -->
 		<div class="main" id="main">
 			<div class="top_content" id="top_content" style="color: #ff4646;padding-top: 20px;">
 				<p>-- Welcome to Questioner. Ready to engage in some mind blowin discussions ? ... checkout latest meetups here --</p>
 			</div>
-			<div class="signupForm" id="signupForm">
+			<div class="loginForm" id="loginForm">
 				<form>
-					<label for="fname"><b>First Name</b></label>
-					<input type="text" name="fname" placeholder="Enter First Name" required>
-
-					<label for="fname"><b>First Name</b></label>
-					<input type="text" name="fname" placeholder="Enter First Name" required>
-
 					<label for="uname"><b>Username</b></label>
 			      	<input type="text" placeholder="Enter Username" name="uname" required>
 
 			      	<label for="psw"><b>Password</b></label>
 			      	<input type="password" placeholder="Enter Password" name="psw" required>
-			        <div class="signup_button" id="signup_button" style="text-align: center;">
-			        	<button type="submit" class="login_">Sign Up</button>
-					</div>
-					<div style="color: #ffff;text-align: center;">
-			        	<p>Already have an account? <a href="https://hullux.github.io/Question-API/login/" style="color: #ff7979;text-decoration:none;">login</a>  OR  Forgot password? Reset <a href="#" style="color: #ff7979;text-decoration:none;">here</a></p>
+			        <div class="login_button" style="text-align: center;">
+			        	<button type="submit" class="login_">Login</button>
 			        </div>
-				    
-				    <label>
+			        <div style="color: #ffff;text-align: center;">
+			        	<p>Don't have an account? <a href="https://hullux.github.io/Question-API/signup/" style="color: #ff7979;text-decoration:none;">signup</a>  OR  Forgot password? Reset <a href="#" style="color: #ff7979;text-decoration:none;">here</a></p>
+			        </div>
 				</form>
 			</div>
 		</div>
+		
 		<div class="footer" id="footer">
 			<ul style="margin: 5px;">
 			<a href="https://facebook.com">Facebook </a>|
