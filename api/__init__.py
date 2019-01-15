@@ -13,7 +13,6 @@ def create_app(config_name):
     app.config.from_pyfile("config.py")
 
     #registering the blueprints here 
-
     app.register_blueprint(meetups_blueprint)
     app.register_blueprint(questions_blueprint)
     app.register_blueprint(rsvp_blueprint)
@@ -21,3 +20,5 @@ def create_app(config_name):
     #print("\nurls here\n\n\n",str(app.url_map))
     
     return app
+  
+  
