@@ -1,8 +1,7 @@
 import re
 from datetime import datetime
-from flask.views import View, MethodView
 import json
-from flask import request, jsonify, Blueprint, Flask
+from flask import request, jsonify
 
 
 from . import meetups_blueprint
@@ -15,7 +14,8 @@ def create_meetup():
         "id":request.json['id'],
         "topic":request.json['topic'],
         "created_on":datetime.now(),
-        "happening_on":request.json['venue'],
+        "happening_on":request.json['happening_on'],
+        "location":request.json['location'],
         "images":request.json['images'],
         "tags":request.json['tags']
     }
@@ -23,11 +23,15 @@ def create_meetup():
     #validation
     if re.match('.*[a-zA-Z0-9]+.*', meetup["topic"]) is None:
         return jsonify({'response': 'invalid topic'}), 400
-    # if re.match('.*[a-zA-Z0-9]+.*',venue):
-    #     return jsonify({'response':'invalid venue entry'})
-    _meetup = Meetup(**meetup)
+    
+    meetup = Meetup().create_meetup(**meetup)
 
-    if _meetup.topic:
-        return jsonify({'response':'meetup created successfully'}),201
+    if meetup:
+        return jsonify({
+                        "status":201,
+                        "data":meetup
+                        }),201
     else:
-        return jsonify({'response':'meetup creation failed'}),40
+        return jsonify({"status":204,
+                        "error":"Meetup creation failed"
+                        }),204
