@@ -1,11 +1,9 @@
 import re
-from datetime import datetime
-import json
-from flask import request, jsonify
+from flask import jsonify,request
 
-
+from .models import Rsvp, Meetup
+from . import rsvp_blueprint
 from . import meetups_blueprint
-from .models import Meetup
 
 @meetups_blueprint.route('/meetups/',methods=['POST'])
 def create_meetup():
@@ -35,3 +33,28 @@ def create_meetup():
         return jsonify({"status":204,
                         "error":"Meetup creation failed"
                         }),204
+
+@rsvp_blueprint.route('/<int:meetup_id>/rsvps/',methods=['POST'])
+def rsvp_for_meetup(meetup_id):
+    print("ID I am here",meetup_id)
+    meetup = Meetup.get_meetup(meetup_id)
+    user = request.json["user"]
+    if user and meetup:
+        data = {
+            "id":request.json["id"],
+            "meetup":meetup,    
+            "response":request.json["response"],
+            "user":user
+        }
+        return jsonify({
+                        "status":201,
+                        "data":data
+                        }), 201
+    else:
+        return jsonify({
+                        "status":404,
+                        "data":"User or Meetup Not Found"
+                        }), 404
+      
+      
+      
