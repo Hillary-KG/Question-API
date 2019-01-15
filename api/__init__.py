@@ -2,8 +2,7 @@ from flask import Flask
 
 #imporing the configuration dictionary object from the instance module 
 from instance.config import app_config
-
-#importing questions blueprint
+from .v1.meetups.views import meetups_blueprint
 from .v1.questions.views import questions_blueprint
 from .v1.meetups.views import rsvp_blueprint
 
@@ -14,6 +13,8 @@ def create_app(config_name):
     app.config.from_pyfile("config.py")
 
     #registering the blueprints here 
+
+    app.register_blueprint(meetups_blueprint)
     app.register_blueprint(questions_blueprint)
     app.register_blueprint(rsvp_blueprint)
 
