@@ -7,7 +7,7 @@ from . import rsvp_blueprint
 
 @rsvp_blueprint.route('/meetups/<int:meetup_id>/rsvps/',methods=['POST'])
 def rsvp_for_meetup(meetup_id):
-    meetup = Meetup.get_meetup(meetup_id)
+    meetup = Meetup().get_meetup(meetup_id)
     user = request.json["user"]
     if user and meetup:
         data = {
