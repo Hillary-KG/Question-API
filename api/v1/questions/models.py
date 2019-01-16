@@ -1,6 +1,3 @@
-import uuid
-import urllib
-from datetime import  datetime
 
 QUESTIONS = []
 COMMENTS = []
@@ -23,6 +20,7 @@ class Question(object):
         QUESTIONS.append(question)
         print("Questions", QUESTIONS)
         return question
+
     @staticmethod
     def get_question(question_id):
         '''function to fetch a specific question given the id'''
@@ -33,21 +31,3 @@ class Question(object):
             return question[0]
         else:
             return "error"
-    # def get_all_questions(self,meetup_id):
-    #     '''a func to get all questions of a meetup'''
-
-    #     return [q for q in self.questions if q["meetup"]==meetup_id]
-
-    # def upvote_question(self,question_id):
-    #     '''a function to upvote a question'''
-    #     question = self.get_question(question_id)
-    #     question["upvotes"] += 1
-
-    #     return question
-
-    # def downvote_question(self,question_id):
-    #     ''' a function to downvote a question '''
-    #     question = self.get_question(question_id)
-    #     question["downvotes"] += 1
-
-    #     return question
