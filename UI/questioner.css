@@ -114,7 +114,8 @@ body{
 	width: 100%;
     justify-content: center;
     display: flex;
-    align-items: center;
+	align-items: center;
+	margin-bottom: 10%;
 }
 form{
     background-color: #256882;
