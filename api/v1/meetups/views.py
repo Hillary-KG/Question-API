@@ -1,5 +1,5 @@
 from flask import jsonify,request
-from .models import Rsvp, Meetup
+from .models import Rsvp
 from . import rsvp_blueprint
 
 @rsvp_blueprint.route('/meetups/<int:meetup_id>/rsvps/',methods=['POST'])
