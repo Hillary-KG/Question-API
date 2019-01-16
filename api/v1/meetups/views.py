@@ -9,13 +9,13 @@ from . import rsvp_blueprint
 def rsvp_for_meetup(meetup_id):
     meetup = Meetup().get_meetup(meetup_id)
     user = request.json["user"]
-    if user and meetup:
+    if user and (meetup != "error"):
         data = {
             "meetup":meetup,    
             "response":request.json["response"],
             "user":user
         }
-        rsvp = Rsvp().rsvp_meetup(**data)
+        rsvp = Rsvp.rsvp_meetup(**data)
         if rsvp:
             return jsonify({
                             "status":201,

@@ -39,6 +39,7 @@ class Rsvp(object):
             "user":kwargs["user"],
             "response":kwargs["response"]
         }
+        RSVPS.append(rsvp)
         return rsvp
 
     @staticmethod

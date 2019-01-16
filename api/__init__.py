@@ -3,8 +3,6 @@ from flask import Flask
 #imporing the configuration dictionary object from the instance module 
 from instance.config import app_config
 
-from .v1.meetups.views import meetups_blueprint
-from .v1.questions.views import questions_blueprint
 from .v1.meetups.views import rsvp_blueprint
 
 def create_app(config_name):
