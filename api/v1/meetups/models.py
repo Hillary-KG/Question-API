@@ -29,15 +29,20 @@ class Meetup(object):
       
 
 class Rsvp(object):
+    '''this class defines the bluprint for an RSVP'''
     def rsvp_meetup(**kwargs):
         '''this function allow user to RSVP for a meetup'''
+        rsvp_id = len(RSVPS)
         rsvp = {
-            "id":kwargs["id"],
+            "id":rsvp_id+1,
             "meetup":kwargs["meetup"],
             "user":kwargs["user"],
             "response":kwargs["response"]
         }
+        RSVPS.append(rsvp)
         return rsvp
+
+    @staticmethod
     def get_rsvp(id):
         '''this function gets a single rsvp record '''
         rsvps = RSVPS
