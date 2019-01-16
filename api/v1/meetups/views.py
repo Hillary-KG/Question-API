@@ -1,10 +1,28 @@
 import re
 from datetime import datetime
-from flask import jsonify,request
+from flask import request, jsonify
 
 from .models import Rsvp, Meetup
 from . import rsvp_blueprint
 from . import meetups_blueprint
+
+@meetups_blueprint.route('/meetups/<int:meetup_id>',methods=['GET'])
+def get_meetup(meetup_id):
+    meetup = Meetup().get_meetup(meetup_id)
+    if meetup != "error":
+        return jsonify({"status":200,
+                         "data":[{
+                            "id":meetup["id"],
+                            "topic":meetup["topic"],
+                            "location":meetup["location"],
+                            "happening_on":meetup["happening_on"],
+                            "tags":meetup["tags"],
+                }]
+            }), 200
+    else:
+        return jsonify({"status":404,
+                        "error":"Meetup NOT found",
+                        }), 404
 
 @meetups_blueprint.route('/meetups/',methods=['POST'])
 def create_meetup():
@@ -22,7 +40,7 @@ def create_meetup():
      #validation
     if re.match('.*[a-zA-Z0-9]+.*', data["topic"]) is None:
         return jsonify({'response': 'invalid topic'}), 400
-    meetup = Meetup(**data).meetup
+    meetup = Meetup().create_meetup(**data)
 
     if meetup:
         return jsonify({"status":201,
