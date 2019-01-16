@@ -23,7 +23,7 @@ class Meetup(object):
             return meetup_[0]
         else:
             return "error"
-          
+    @staticmethod  
     def get_all_meetups():
         meetups = MEETUPS
         '''function to get all the meetups'''
