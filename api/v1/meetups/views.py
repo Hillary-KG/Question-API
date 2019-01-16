@@ -40,7 +40,7 @@ def create_meetup():
      #validation
     if re.match('.*[a-zA-Z0-9]+.*', data["topic"]) is None:
         return jsonify({'response': 'invalid topic'}), 400
-    meetup = Meetup(**data).meetup
+    meetup = Meetup().create_meetup(**data)
 
     if meetup:
         return jsonify({"status":201,
