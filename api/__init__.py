@@ -18,6 +18,6 @@ def create_app(config_name):
     app.register_blueprint(questions_blueprint)
     app.register_blueprint(rsvp_blueprint)
 
-    #print("\nurls here\n\n\n",str(app.url_map))
+    # print("\nurls here\n\n\n",str(app.url_map))
     
     return app
