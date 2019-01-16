@@ -72,14 +72,11 @@
 	bottom: 0;
 	position: fixed;
 }
-/*#sidebar-left, #main, #sidebar-right{
-	min-height: 600px				
-}*/
+
 body{
 	font-family: 'Open Sans', sans-serif;
 	margin: 0;
 	overflow-y: auto;
-	/*width: 100%;*/
 	max-width: 100%;
 }
 
@@ -96,11 +93,10 @@ body{
 	-webkit-flex: 1.5;
 	-ms-flex: 1.5;
 	flex: 1.5;
-	/*margin-top: 5%;*/
 	display: -webkit-flex;
-		display: flex;
-		height: 60%;
-		margin: 20px;
+	display: flex;
+	height: 60%;
+	margin: 20px;
 }
 .rsvp_button {
 	background-color: #fc3f3f;
@@ -110,38 +106,23 @@ body{
 }
 .loginForm {
 	width: 100%;
-    /* text-align: center; */
     justify-content: center;
     display: flex;
     align-items: center;
 }
  .signupForm {
 	width: 100%;
-    /* text-align: center; */
     justify-content: center;
     display: flex;
     align-items: center;
 }
-/*.signupForm {
-	background-color: #31aaff;
-	border-radius: 2px;
-	border:none;
-	width: 300px;
-}*/
 form{
     background-color: #256882;
-    /* margin: 20px; */
     padding: 30px;
-    /* width: 50%;  */
+    width: 50%; 
     border-radius: 2px;
     border: none;
     text-align: left;
-    /* position: absolute; */
-    /* margin-left: 25%; */
-    /* margin-top: 10%; */
-    /* vertical-align: middle; */
-	/* display: table-cell; */
-	margin-bottom: 20%;
 }
 input[type=text], input[type=password] {
   width: 100%;
