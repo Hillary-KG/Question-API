@@ -55,7 +55,7 @@ def create_meetup():
     else:
         return jsonify({'status':400,"error":'meetup creation failed'}), 400
 
-@meetups_blueprint.route('/meetups/',methods=['GET'])
+@meetups_blueprint.route('/meetups/upcoming/',methods=['GET'])
 def get_all_meetups():
     '''a endpoint to fetch all meetup records'''
     meetups = Meetup().get_all_meetups()
