@@ -3,13 +3,13 @@ RSVPS = []
 
 class Meetup(object):
     '''this class defines a blueprint of a meetup record'''
-    def __init__(self, *args, **kwargs):
-        self.meetups = MEETUPS
-        self.meetup = kwargs
-        MEETUPS.append(self.meetup)
-
     def __repr__(self):
         return "<Meetup: {}>".format(self.title)
+    
+    def create_meetup(self,**kwargs):
+        '''this function creates a meetup record in the api'''
+        MEETUPS.append(kwargs)
+        return kwargs
 
     @staticmethod
     def get_meetup(meetup_id):
@@ -28,16 +28,6 @@ class Meetup(object):
         meetups = MEETUPS
         '''function to get all the meetups'''
         return meetups
-
-class Meetup(object):
-    '''this class defines a blueprint of a meetup record'''
-    def __repr__(self):
-        return "<Meetup: {}>".format(self.title)
-    
-    def create_meetup(self,**kwargs):
-        '''this function creates a meetup record in the api'''
-        MEETUPS.append(kwargs)
-        return kwargs
       
 
 class Rsvp(object):
