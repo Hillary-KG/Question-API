@@ -81,7 +81,7 @@ def get_all_meetups():
                         "error":"Meetup creation failed"
                         }),204
 
-@rsvp_blueprint.route('/<int:meetup_id>/rsvps/',methods=['POST'])
+@rsvp_blueprint.route('/meetups/<int:meetup_id>/rsvps/',methods=['POST'])
 def rsvp_for_meetup(meetup_id):
     print("ID I am here",meetup_id)
     meetup = Meetup.get_meetup(meetup_id)
