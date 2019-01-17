@@ -34,6 +34,6 @@ class Question(object):
             return "error"
 
     def get_all_questions():
-        '''this fucntion gets all questions posted '''
+        ''' this fucntion gets all questions posted '''
         questions = QUESTIONS
         return questions

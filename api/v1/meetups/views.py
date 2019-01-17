@@ -1,5 +1,4 @@
 import re
-from datetime import datetime
 from flask import request, jsonify
 
 from .models import Rsvp, Meetup
@@ -29,7 +28,6 @@ def create_meetup():
     '''a endpoint to create a meetup record'''
     data = {
         "topic":request.json['topic'],
-        "created_on":datetime.now(),
         "happening_on":request.json['happening_on'],
         "location":request.json['location'],
         "images":request.json['images'],
@@ -83,4 +81,3 @@ def rsvp_for_meetup(meetup_id):
                         "status":404,
                         "data":"User or Meetup Not Found"
                         }), 404
-

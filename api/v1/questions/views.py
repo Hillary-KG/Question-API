@@ -1,8 +1,6 @@
-
 from flask import jsonify, request
-from datetime import datetime
-from . import questions_blueprint
 
+from . import questions_blueprint
 from .models import Question
 from ..meetups.models import Meetup
 
