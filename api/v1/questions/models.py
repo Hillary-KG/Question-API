@@ -1,24 +1,25 @@
+from datetime import datetime
 
 QUESTIONS = []
 COMMENTS = []
 
 class Question(object):
     '''this class represents blueprint/manipulations of questions'''
+    def __init__(self):
+        self.count = len(QUESTIONS)
     
     def create_question(self,**kwargs):
         '''a function to create a question'''
         question = {
-            "id":kwargs["id"],
-            "created_on":kwargs["created_on"],
+            "id":self.count+1,
+            "created_on":datetime.now(),
             "body":kwargs["body"],
-            "votes":kwargs["votes"],
+            "votes":0,
             "meetup":kwargs["meetup"],
             "created_by":kwargs["created_by"],
             "title":kwargs["title"]
         }
-
         QUESTIONS.append(question)
-        print("Questions", QUESTIONS)
         return question
 
     @staticmethod
@@ -31,3 +32,8 @@ class Question(object):
             return question[0]
         else:
             return "error"
+
+    def get_all_questions():
+        '''this fucntion gets all questions posted '''
+        questions = QUESTIONS
+        return questions

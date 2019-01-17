@@ -1,15 +1,28 @@
+from datetime import datetime
+
 MEETUPS = []
 RSVPS = []
 
 
 class Meetup(object):
     '''this class defines a blueprint of a meetup record'''
-    def create_meetup(self,**kwargs):
+    def __init__(self):
+        self.count = len(MEETUPS)
+    def create_meetup(self, **kwargs):
         '''this function creates a meetup record in the api'''
-        MEETUPS.append(kwargs)
-        return kwargs
+        meetup = {
+            "id":self.count+1,
+            "topic":kwargs['topic'],
+            "created_on":datetime.now(),
+            "happening_on":kwargs['happening_on'],
+            "location":kwargs['location'],
+            "images":kwargs['images'],
+            "tags":kwargs['tags']
+        }
+        MEETUPS.append(meetup)
+        return meetup
 
-    @staticmethod
+    
     def get_meetup(meetup_id):
         '''this function fetches on meetup record 
         and returns it or returns an error if it is not found
@@ -21,7 +34,7 @@ class Meetup(object):
             return meetup_[0]
         else:
             return "error"
-    @staticmethod  
+   
     def get_all_meetups():
         meetups = MEETUPS
         '''function to get all the meetups'''
