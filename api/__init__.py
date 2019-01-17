@@ -1,11 +1,13 @@
 from flask import Flask
+# from flask_debug import Debug
 
 #imporing the configuration dictionary object from the instance module 
 from instance.config import app_config
 
 from .v1.meetups.views import rsvp_blueprint
 from .v1.meetups.views import meetups_blueprint
-from.v1.questions.views import questions_blueprint
+from .v1.questions.views import questions_blueprint
+from .v1.auth.views import signup_blueprint, login_blueprint, pswd_reset_blueprint
 
 
 def create_app(config_name):
@@ -18,8 +20,11 @@ def create_app(config_name):
     app.register_blueprint(rsvp_blueprint)
     app.register_blueprint(meetups_blueprint)
     app.register_blueprint(questions_blueprint)
+    app.register_blueprint(signup_blueprint)
+    app.register_blueprint(login_blueprint)
+    app.register_blueprint(pswd_reset_blueprint)
     
 
-    print("\nurls here\n\n\n",str(app.url_map))
+    # print("\nurls here\n\n\n",str(app.url_map))
     
     return app
